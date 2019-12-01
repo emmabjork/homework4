@@ -8,14 +8,8 @@ import CO2Emission from "./CO2Emission";
 import Temperature from "./Temperature";
 import GlacierSize from "./GlacierSize";
 import SeaLevel from "./SeaLevel";
-import CO2List from "./CO2List";
-import NavBar from "./NavBar";
-import NotFound from "./NotFound";
-import CO2PieChart from "./CO2PieChart";
 
-import { Route, Switch, Redirect } from "react-router-dom";
-
-export default class AllCharts extends Component {
+export default class AllCharts2 extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -64,48 +58,10 @@ export default class AllCharts extends Component {
   render() {
     return (
       <React.Fragment>
-        <NavBar></NavBar>
-        <Switch>
-          <Route
-            path="/co2/:Year"
-            render={props => (
-              <CO2PieChart {...props} CO2data={this.state.CO2Emission} />
-            )}
-          />
-          <Route
-            path="/co2"
-            render={props => (
-              <CO2Emission {...props} CO2data={this.state.CO2Emission} />
-            )}
-          />
-          <Route
-            path="/globaltemp"
-            render={props => (
-              <Temperature {...props} Tempdata={this.state.GlobalTemp} />
-            )}
-          />
-          <Route
-            path="/glaciersize"
-            render={props => (
-              <GlacierSize {...props} Glacierdata={this.state.GlacierSize} />
-            )}
-          />
-          <Route
-            path="/sealevel"
-            render={props => (
-              <SeaLevel {...props} SeaLeveldata={this.state.SeaLevel} />
-            )}
-          />
-          <Route
-            path="/co2list"
-            render={props => (
-              <CO2List {...props} CO2data={this.state.CO2Emission} />
-            )}
-          />
-          <Route path="/notfound" component={NotFound} />
-          <Redirect from="/" exact to="/co2"></Redirect>
-          <Redirect to="/notfound" />
-        </Switch>
+        <CO2Emission CO2data={this.state.CO2Emission}></CO2Emission>
+        <Temperature Tempdata={this.state.GlobalTemp}></Temperature>
+        <GlacierSize Glacierdata={this.state.GlacierSize}></GlacierSize>
+        <SeaLevel SeaLeveldata={this.state.SeaLevel}></SeaLevel>
       </React.Fragment>
     );
   }
