@@ -12,6 +12,7 @@ import CO2List from "./CO2List";
 import NavBar from "./NavBar";
 import NotFound from "./NotFound";
 import CO2PieChart from "./CO2PieChart";
+import IceSea from "./IceSea";
 
 import { Route, Switch, Redirect } from "react-router-dom";
 
@@ -100,6 +101,16 @@ export default class AllCharts extends Component {
             path="/co2list"
             render={props => (
               <CO2List {...props} CO2data={this.state.CO2Emission} />
+            )}
+          />
+          <Route
+            path="/icesea"
+            render={props => (
+              <IceSea
+                {...props}
+                Glacierdata={this.state.GlacierSize}
+                SeaLeveldata={this.state.SeaLevel}
+              />
             )}
           />
           <Route path="/notfound" component={NotFound} />
